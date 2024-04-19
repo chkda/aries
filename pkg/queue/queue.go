@@ -8,6 +8,6 @@ type Message struct {
 }
 
 type Streamer[T any] interface {
-	Publish(context.Context, *Message) error
-	Subscribe(context.Context, string) (<-chan T, error)
+	Publish(ctx context.Context, msg *Message) error
+	Subscribe(ctx context.Context, queue string) (<-chan T, error)
 }
