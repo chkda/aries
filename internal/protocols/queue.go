@@ -7,6 +7,6 @@ type Message struct {
 	NotificationBody    string `json:"notification_body"`
 	UserId              string `json:"user_id"`
 	UserDevice          string `json:"user_device"`
-	NotificationMethod  string `json:"notification_method"`
-	Group               string `json:"group"`
+	NotificationType    string `json:"notification_type"`
+	BU                  string `json:"bu"`
 }
