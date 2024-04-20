@@ -19,7 +19,7 @@ var columns = []string{
 }
 
 type QueryHandler struct {
-	DBWriter db.Writer
+	writer db.Writer
 }
 
 type QueryRow struct {
@@ -35,13 +35,13 @@ type QueryRow struct {
 
 func New(writer db.Writer) *QueryHandler {
 	return &QueryHandler{
-		DBWriter: writer,
+		writer: writer,
 	}
 }
 
 func (c *QueryHandler) Insert(ctx context.Context, row *QueryRow) error {
 	query := c.queryBuilder(row)
-	err := c.DBWriter.Write(ctx, query)
+	err := c.writer.Write(ctx, query)
 	if err != nil {
 		return err
 	}

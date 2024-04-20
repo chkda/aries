@@ -10,3 +10,5 @@ type Message struct {
 	NotificationType    string `json:"notification_type"`
 	BU                  string `json:"bu"`
 }
+
+const NOTFICATION_EVENTS_QUEUE = "notification_events_v1"
