@@ -12,6 +12,6 @@ type Request struct {
 }
 
 type Response struct {
-	Success bool    `json:"success"`
-	Message *string `json:"message"`
+	Success bool   `json:"success"`
+	Message string `json:"message,omitempty"`
 }
