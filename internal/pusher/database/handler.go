@@ -51,15 +51,15 @@ func (c *QueryHandler) Insert(ctx context.Context, row *QueryRow) error {
 func (c *QueryHandler) queryBuilder(row *QueryRow) string {
 	query := "INSERT INTO " + NOTIFICATION_EVENTS_TABLE + " (" + strings.Join(columns, ",") + ") "
 	values := []string{
-		row.EventId,
-		row.NotificationId,
-		row.NotificationSubject,
-		row.NotificationBody,
-		row.UserId,
-		row.UserDevice,
-		row.NotificationType,
-		row.BU,
+		"'" + row.EventId + "'",
+		"'" + row.NotificationId + "'",
+		"'" + row.NotificationSubject + "'",
+		"'" + row.NotificationBody + "'",
+		"'" + row.UserId + "'",
+		"'" + row.UserDevice + "'",
+		"'" + row.NotificationType + "'",
+		"'" + row.BU + "'",
 	}
-	query += " VALUES " + strings.Join(values, ",")
+	query += " VALUES (" + strings.Join(values, ",") + ")"
 	return query
 }
