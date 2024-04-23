@@ -1,0 +1,13 @@
+{
+    "http_port":"4000",
+    "rabbitmq":{
+        "host":"localhost:5672",
+        "username":"user",
+        "password":"user123"
+    },
+    "clickhouse":{
+        "host":"localhost:9000",
+        "username":"user",
+        "password":"user123"
+    }
+}

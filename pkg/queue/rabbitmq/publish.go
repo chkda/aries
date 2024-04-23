@@ -9,7 +9,7 @@ import (
 
 func (c *Client) Publish(
 	ctx context.Context,
-	msg queue.Message,
+	msg *queue.Message,
 ) error {
 	channel, err := c.Conn.Channel()
 	if err != nil {

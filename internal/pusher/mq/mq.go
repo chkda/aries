@@ -12,7 +12,7 @@ type MQPublisher struct {
 	publisher queue.Publisher
 }
 
-func New(publisher queue.Publisher) *MQPublisher {
+func NewPublisher(publisher queue.Publisher) *MQPublisher {
 	return &MQPublisher{
 		publisher: publisher,
 	}

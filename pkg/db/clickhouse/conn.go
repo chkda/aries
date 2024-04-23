@@ -9,7 +9,7 @@ type Client struct {
 	Conn driver.Conn
 }
 
-func New(cfg Config) (*Client, error) {
+func New(cfg *Config) (*Client, error) {
 	conn, err := clk.Open(
 		&clk.Options{
 			Addr: []string{cfg.Host},
