@@ -2,11 +2,9 @@ package rabbitmq
 
 import (
 	"context"
-
-	amqp "github.com/rabbitmq/amqp091-go"
 )
 
-func (c *Client) Subscribe(ctx context.Context, queue string) (<-chan amqp.Delivery, error) {
+func (c *Client) Subscribe(ctx context.Context, queue string) (chan []byte, error) {
 	channel, err := c.Conn.Channel()
 	if err != nil {
 		return nil, err
@@ -26,5 +24,15 @@ func (c *Client) Subscribe(ctx context.Context, queue string) (<-chan amqp.Deliv
 	if err != nil {
 		return nil, err
 	}
-	return messageChan, nil
+
+	bodyChan := make(chan []byte)
+	go func() {
+		defer close(bodyChan)
+		defer channel.Close()
+		for msg := range messageChan {
+			bodyChan <- msg.Body
+		}
+	}()
+
+	return bodyChan, nil
 }
