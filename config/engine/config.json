@@ -1,0 +1,21 @@
+{
+    "http_port":"5000",
+    "rabbitmq":{
+        "host":"localhost:5672",
+        "username":"user",
+        "password":"user123"
+    },
+    "queue":"",
+    "gmail":{
+        "smtp_server":"",
+        "smtp_port":"",
+        "username":"",
+        "password":""
+    },
+    "clickhouse":{
+        "host":"localhost:9000",
+        "username":"user",
+        "password":"user123",
+        "database":"notifications"
+    }
+}
