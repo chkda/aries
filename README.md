@@ -7,22 +7,21 @@ Aries is a simple and extendible push notification system. It is designed with  
 The project is organized into several directories, each with a specific purpose:
 
 - **`/cmd`**: Contains the entry points for the services. Each service has its own directory with a `main.go` file.
-  - `/service1`
-    - `main.go`  # Entry point for service 1
-  - `/service2`
-    - `main.go`  # Entry point for service 2
+  - `/engine`
+    - `main.go`  # Entry point for engine
+  - `/pusher`
+    - `main.go`  # Entry point for pusher
 - **`/internal`**: Core application logic, organized by service.
-  - `/service1`
+  - `/engine`
     - `/app`        # Application business rules (core logic)
-    - `/infra`      # Infrastructure (database, network code)
+    - `/databases`      # Infrastructure (database, network code)
     - `/interfaces` # Interfaces (HTTP handlers, gRPC APIs)
-  - `/service2`
-    - `/app`        # Core application logic for service 2
-    - `/infra`      # Infrastructure for service 2
-    - `/interfaces` # Interfaces for service 2
+  - `/pusher`
+    - `/app`        # Core application logic for pusher
+    - `/databases`      # Infrastructure for pusher
+    - `/interfaces` # Interfaces for pusher
 - **`/pkg`**: Shared libraries and utilities used across services.
-  - `/commons`     # Shared libraries and utilities
-- **`/configs`**: Configuration files and environment specifics.
+- **`/config`**: Configuration files and environment specifics.
 - **`/scripts`**: Scripts for building, running, and maintenance.
 - **`/deployments`**: Dockerfiles and Kubernetes manifests for deployment.
 - **`/docs`**: Documentation for the project.

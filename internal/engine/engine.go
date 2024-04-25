@@ -10,6 +10,7 @@ import (
 	"github.com/chkda/aries/internal/engine/database"
 	"github.com/chkda/aries/internal/engine/interfaces/healthcheck"
 	"github.com/chkda/aries/internal/engine/mq"
+	"github.com/chkda/aries/internal/protocols"
 	"github.com/chkda/aries/pkg/db/clickhouse"
 	"github.com/chkda/aries/pkg/mail/gmail"
 	"github.com/chkda/aries/pkg/queue/rabbitmq"
@@ -18,7 +19,6 @@ import (
 
 type Config struct {
 	HTTPPort   string             `json:"http_port"`
-	Queue      string             `json:"queue"`
 	RabbitMQ   *rabbitmq.Config   `json:"rabbitmq"`
 	Clickhouse *clickhouse.Config `json:"clickhouse"`
 	Gmail      *gmail.Config      `json:"gmail"`
@@ -55,7 +55,7 @@ func Start(config string) {
 	appHandler := app.New(subscriber, queryHandler, mailClient)
 	ctx := context.Background()
 	go func() {
-		appHandler.StartConsuming(ctx, cfg.Queue)
+		appHandler.StartConsuming(ctx, protocols.NOTFICATION_EVENTS_QUEUE)
 	}()
 
 	healthcheckController := healthcheck.New()
